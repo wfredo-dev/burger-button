@@ -3,17 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Burger</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
-    <h1>Practice Javascript</h1>
-
-    <button type="button" onclick="myfunction()">Click</button>
-    <div id="content">Hi There</div>
-    <script>
-      //   alert("hiyaaaa");
-      console.log("hello");
-    </script>
-    <script src="main.js"></script>
+    <header class="header">
+      <nav class="navbar" id="navbar">
+        <a href="#" id="logo" class="logo"
+          ><img src="images/logo.png" alt="logo" height="60px"
+        /></a>
+        <ul class="nav-links" id="nav-links">
+          <li class="nav-item"><a href="#home">HOME</a></li>
+          <li class="nav-item"><a href="#about">ABOUT</a></li>
+          <li class="nav-item"><a href="#contacts">CONTACTS</a></li>
+        </ul>
+        <div class="burger" id="burger" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </nav>
+      <nav class="navbar-mobile" id="navbar-mobile">
+        <ul class="nav-links-mobile" id="nav-links">
+          <li class="nav-item-mobile"><a href="#home">HOME</a></li>
+          <li class="nav-item-mobile"><a href="#about">ABOUT</a></li>
+          <li class="nav-item-mobile"><a href="#contacts">CONTACTS</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="hero"><div class="content"></div></section>
   </body>
+  <script>
+    function toggleMenu() {
+      const burger = document.getElementById("burger");
+      const navLinksMobile = document.getElementById("navbar-mobile");
+      navLinksMobile.classList.toggle("hidden");
+      if (navLinksMobile.classList.contains("hidden")) {
+        burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      } else {
+        burger.innerHTML = '<i class="fa-solid fa-x"></i>';
+      }
+    }
+    window.addEventListener("resize", function () {
+      const navLinksMobile = document.getElementById("navbar-mobile");
+      const burger = document.getElementById("burger");
+      if (window.innerWidth > 560) {
+        navLinksMobile.classList.add("hidden");
+        burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      }
+    });
+  </script>
 </html>
